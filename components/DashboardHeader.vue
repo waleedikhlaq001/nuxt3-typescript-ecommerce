@@ -10,6 +10,11 @@ interface Emits {
 defineEmits<Emits>();
 
 defineProps<Props>();
+
+const accountRedirect = async (): Promise<void> => {
+  await navigateTo('/dashboard/account');
+};
+
 </script>
 
 <template>
@@ -23,7 +28,7 @@ defineProps<Props>();
 				</button>
 			</div>
 			<div class="dashboard-header__right">
-				<div class="dashboard-header__image flex items-center content-center text-white">V</div>
+				<div @click.prevent="accountRedirect" class="dashboard-header__image flex items-center content-center text-white">V</div>
 			</div>
 		</div>
 	</div>
@@ -81,6 +86,7 @@ defineProps<Props>();
 		width: 4rem;
 		border-radius: 50%;
 		margin-left: auto;
+		cursor: pointer;
 	}
 }
 </style>

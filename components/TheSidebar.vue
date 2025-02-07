@@ -12,6 +12,8 @@ const links = [
 	{ name: "dashboard-addresses", title: "Addresses" },
 	{ name: "dashboard-account", title: "Account" },
 ];
+
+const logout = () => navigateTo('/');
 </script>
 
 <template>
@@ -27,7 +29,7 @@ const links = [
 				</NuxtLink>
 			</li>
 		</ul>
-		<button class="sidebar__logout button flex items-center">
+		<button class="sidebar__logout button flex items-center" @click.prevent="logout">
 			<IconsNavigation variant="logout" />
 			Logout
 		</button>

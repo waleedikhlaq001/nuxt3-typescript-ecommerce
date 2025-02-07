@@ -1,12 +1,23 @@
 <script setup lang="ts">
-const navigationLinks = ref([
+import useCartStore from '~~/stores/CartStore';
+
+interface link {
+	name: string,
+	path: string
+}
+
+const navigationLinks = ref<link[]>([
 	{ name: "Shop", path: "shop" },
 	{ name: "Blog", path: "blog" },
 	{ name: "Our Story", path: "about" },
 ]);
 
+const cartStore = useCartStore();
+
+const cartCount = computed(() => cartStore.numberOfProductsInCart);
+
 const goToDashboard = () => {
-	navigateTo({ name: "about" });
+	navigateTo({ name: "auth" });
 };
 
 const showCartSideMenu = ref(false);
@@ -39,7 +50,8 @@ watch(showCartSideMenu, () => {
 				</BaseButton>
 			</li>
 			<li>
-				<BaseButton title="Cart">
+				<BaseButton title="Cart" class="cart_badge">
+					<span v-if="cartCount" class="cart_badge_count">{{ cartCount }}</span>
 					<IconsAction variant="cart" @click="toggleCartSideMenu(true)" />
 				</BaseButton>
 			</li>
@@ -132,4 +144,26 @@ watch(showCartSideMenu, () => {
 	padding-bottom: 0;
 	border: none !important;
 }
+
+.cart_badge {
+  position: relative;
+
+  &_count {
+    position: absolute;
+    right: -8px;
+    top: -12px;
+    width: 20px; /* Adjust size for better visibility */
+    height: 20px;
+    background-color: red !important;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 12px; /* Adjust for better fit */
+    font-weight: bold;
+  }
+}
+
 </style>

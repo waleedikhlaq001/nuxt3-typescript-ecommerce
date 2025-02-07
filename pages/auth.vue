@@ -14,6 +14,7 @@ const formData = reactive({
 const rememberMe = ref(false);
 
 const authenticate = () => {
+	navigateTo({ name: "dashboard" });
 	console.log(formData);
 };
 </script>
