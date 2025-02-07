@@ -58,6 +58,8 @@ const logout = () => {};
         <p>{{ canceledOrders }}</p>
       </div>
     </div>
+
+		<DashboardApexchart />
   </div>
 </template>
 

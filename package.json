@@ -19,6 +19,8 @@
     "@vueform/slider": "vueform/slider",
     "@vuelidate/core": "^2.0.2",
     "@vuelidate/validators": "^2.0.2",
+    "apexcharts": "^4.4.0",
+    "vue3-apexcharts": "^1.8.0",
     "vue3-star-ratings": "^1.1.0"
   }
 }
